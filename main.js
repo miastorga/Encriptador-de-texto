@@ -43,7 +43,7 @@ const validacionTextareaMayusculas = (text) => {
 	console.log(checkForUpperCase)
 	if (checkForUpperCase) console.log(text)
 }
-validacionTextareaMayusculas('gatO')
+validacionTextareaMayusculas('gat')
 // const mostrarMensaje = (encriptado) => {
 // 	const msjEncriptado = encriptado()
 // 	msjResultado.textContent = msjEncriptado
