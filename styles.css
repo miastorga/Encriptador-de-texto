@@ -76,6 +76,7 @@ textarea {
 	height: 67px;
 	font-size: 20px;
 	margin-bottom: 1rem;
+	border: none;
 }
 .desencriptar {
 	background-color: #d8dfe8;
@@ -94,9 +95,13 @@ textarea {
 .msg-resultado-container {
 	height: 100%;
 	font-size: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
 }
 #msg-resultado {
-	/* align-content: flex-start; */
 	margin-top: 4rem;
 	display: none;
+	padding: 1rem;
 }

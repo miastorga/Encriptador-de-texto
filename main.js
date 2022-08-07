@@ -12,31 +12,45 @@ const llavesMap = new Map([
 	['o', 'ober'],
 	['u', 'ufat'],
 ])
+const checkIfStringHasSpecialChar = (_string) => {
+	let spChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+	if (spChars.test(_string)) {
+		return true
+	} else {
+		return false
+	}
+}
 const encriptar = () => {
 	const textoTextarea = textarea[0].value
-	let textoEncriptado = ''
-	for (let i = 0; i < textoTextarea.length; i++) {
-		textoEncriptado += llavesMap.get(textoTextarea[i]) ?? textoTextarea[i]
+	const specialCharecters = checkIfStringHasSpecialChar(textoTextarea)
+	if (!specialCharecters) {
+		let textoEncriptado = ''
+		for (let i = 0; i < textoTextarea.length; i++) {
+			textoEncriptado += llavesMap.get(textoTextarea[i]) ?? textoTextarea[i]
+		}
+		const textoEncriptadoArray = textoEncriptado.split('')
+		const validarMayusculas = textoEncriptadoArray.every(
+			(caracter) => caracter === caracter.toLowerCase()
+		)
+		if (validarMayusculas) return textoEncriptado
 	}
-	const textoEncriptadoArray = textoEncriptado.split('')
-	const validarMayusculas = textoEncriptadoArray.every(
-		(caracter) => caracter === caracter.toLowerCase()
-	)
-	if (validarMayusculas) return textoEncriptado
 }
 const desencriptar = () => {
 	let textoTextarea = textarea[0].value
-	const textoEncriptadoArray = textoTextarea.split('')
-	const validarMayusculas = textoEncriptadoArray.every(
-		(caracter) => caracter === caracter.toLowerCase()
-	)
-	if (validarMayusculas) {
-		for (const [key, value] of llavesMap) {
-			if (textoTextarea.includes(value)) {
-				textoTextarea = textoTextarea.replaceAll(value, key)
+	const specialCharecters = checkIfStringHasSpecialChar(textoTextarea)
+	if (!specialCharecters) {
+		const textoEncriptadoArray = textoTextarea.split('')
+		const validarMayusculas = textoEncriptadoArray.every(
+			(caracter) => caracter === caracter.toLowerCase()
+		)
+		if (validarMayusculas) {
+			for (const [key, value] of llavesMap) {
+				if (textoTextarea.includes(value)) {
+					textoTextarea = textoTextarea.replaceAll(value, key)
+				}
 			}
+			return textoTextarea
 		}
-		return textoTextarea
 	}
 }
 // const copiar = (str) => {
@@ -44,12 +58,15 @@ const desencriptar = () => {
 // 		return navigator.clipboard.writeText(str)
 // 	return Promise.reject('The Clipboard API is not available.')
 // }
-// const mostrarMensaje = (encriptado) => {
-// 	const msjEncriptado = encriptado()
-// 	msjResultado.textContent = msjEncriptado
-// 	msjResultado.style.display = 'inline-block'
-// 	muneco.style.display = 'none'
-// 	msjNoEncontrado[0].style.display = 'none'
+
+// const mostrarMensaje = (functionEncriptar) => {
+// 	const msjEncriptado = functionEncriptar() ?? ''
+// 	if (msjEncriptado.trim()) {
+// 		msjResultado.textContent = msjEncriptado
+// 		msjResultado.style.display = 'inline-block'
+// 		muneco.style.display = 'none'
+// 		msjNoEncontrado[0].style.display = 'none'
+// 	}
 // }
 const mostarMensajeEncriptado = () => {
 	const msjEncriptado = encriptar() ?? ''
@@ -69,5 +86,6 @@ const mostarMensajeDesencriptado = () => {
 		msjNoEncontrado[0].style.display = 'none'
 	}
 }
+
 btnEncriptar.addEventListener('click', mostarMensajeEncriptado)
 btnDesencriptar.addEventListener('click', mostarMensajeDesencriptado)
