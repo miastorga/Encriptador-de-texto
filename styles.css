@@ -20,6 +20,7 @@ textarea {
 	font-size: 32px;
 	resize: none;
 }
+
 #muneco {
 	width: 300px;
 	height: 300px;
@@ -73,15 +74,29 @@ textarea {
 	width: 328px;
 	color: white;
 	height: 67px;
-	font-size: 16px;
+	font-size: 20px;
+	margin-bottom: 1rem;
 }
-#desencriptar {
+.desencriptar {
 	background-color: #d8dfe8;
 	padding: 24px;
 	border-radius: 24px;
 	width: 328px;
 	height: 67px;
 	color: #0a3871;
-	font-size: 16px;
+	font-size: 20px;
 	border: 1px solid #0a3871;
+	margin-bottom: 1rem;
+}
+.botones > p {
+	margin: 0;
+}
+.msg-resultado-container {
+	height: 100%;
+	font-size: 1.5rem;
+}
+#msg-resultado {
+	/* align-content: flex-start; */
+	margin-top: 4rem;
+	display: none;
 }
