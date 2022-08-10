@@ -64,12 +64,7 @@ const mostarMensajeEncriptado = () => {
 }
 const mostarMensajeDesencriptado = () => {
 	const msjDesencriptado = desencriptar() ?? ''
-	if (msjDesencriptado.trim()) {
-		msjResultadoContainer.style.display = 'inline-block'
-		msjResultado.textContent = msjDesencriptado
-		muneco.style.display = 'none'
-		msjNoEncontrado[0].style.display = 'none'
-	}
+	msjResultado.textContent = msjDesencriptado
 }
 btnEncriptar.addEventListener('click', mostarMensajeEncriptado)
 btnDesencriptar.addEventListener('click', mostarMensajeDesencriptado)
