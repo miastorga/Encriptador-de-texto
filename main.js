@@ -16,6 +16,9 @@ const checkIfStringHasSpecialChar = (string) => {
 	let spChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
 	return spChars.test(string) ? true : false
 }
+const copyToClipboard = (text) => {
+	navigator.clipboard.writeText(text).then(() => console.log('hola'))
+}
 const encriptar = () => {
 	btnCopiar.style.display = 'inline-block'
 	const textoTextarea = textarea[0].value
@@ -25,21 +28,20 @@ const encriptar = () => {
 		for (let i = 0; i < textoTextarea.length; i++) {
 			textoEncriptado += llavesMap.get(textoTextarea[i]) ?? textoTextarea[i]
 		}
-		const textoEncriptadoArray = textoEncriptado.split('')
-		const validarMayusculas = textoEncriptadoArray.every(
-			(caracter) => caracter === caracter.toLowerCase()
-		)
+		const validarMayusculas = textoEncriptado
+			.split('')
+			.every((char) => char === char.toLowerCase())
 		if (validarMayusculas) return textoEncriptado
 	}
+	console.log(msjResultado.textContent)
 }
 const desencriptar = () => {
 	let textoTextarea = textarea[0].value
 	const specialCharecters = checkIfStringHasSpecialChar(textoTextarea)
 	if (!specialCharecters) {
-		const textoEncriptadoArray = textoTextarea.split('')
-		const validarMayusculas = textoEncriptadoArray.every(
-			(caracter) => caracter === caracter.toLowerCase()
-		)
+		const validarMayusculas = textoTextarea
+			.split('')
+			.every((char) => char === char.toLowerCase())
 		if (validarMayusculas) {
 			for (const [key, value] of llavesMap) {
 				if (textoTextarea.includes(value)) {
@@ -48,15 +50,6 @@ const desencriptar = () => {
 			}
 			return textoTextarea
 		}
-	}
-}
-const mostrarMensaje = (functionEncriptar) => {
-	const msjEncriptado = functionEncriptar() ?? ''
-	if (msjEncriptado.trim()) {
-		msjResultado.textContent = msjEncriptado
-		msjResultado.style.display = 'inline-block'
-		muneco.style.display = 'none'
-		msjNoEncontrado[0].style.display = 'none'
 	}
 }
 const mostarMensajeEncriptado = () => {
@@ -79,3 +72,4 @@ const mostarMensajeDesencriptado = () => {
 }
 btnEncriptar.addEventListener('click', mostarMensajeEncriptado)
 btnDesencriptar.addEventListener('click', mostarMensajeDesencriptado)
+// btnCopiar.addEventListener('click', copyToClipboard(msjResultado.textContent))
