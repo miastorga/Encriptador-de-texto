@@ -31,7 +31,6 @@ textarea {
 	background-color: #ffffff;
 	margin-left: 3rem;
 	width: 400px;
-	height: 90vh;
 	box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
 	border-radius: 32px;
 	display: flex;
@@ -41,8 +40,6 @@ textarea {
 }
 .logo-container {
 	position: sticky;
-	/* top: 20px;
-	left: 40px; */
 }
 .flex-container {
 	margin: 1rem 4rem 0rem 4rem;
@@ -104,10 +101,10 @@ textarea {
 	flex-wrap: wrap;
 	justify-content: center;
 	text-align: center;
+	display: none;
 }
 #msg-resultado {
 	margin-top: 4rem;
-	display: none;
 	padding: 1rem;
 }
 .textarea-inner-container {
@@ -115,9 +112,7 @@ textarea {
 	justify-content: center;
 	align-items: center;
 }
-.resultado-responsive {
-	display: none;
-}
+
 /*Media Queries */
 
 /* Celular  */
@@ -215,12 +210,13 @@ textarea {
 
 @media (max-width: 1279px) {
 	.flex-container {
+		text-align: center;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
 	.textarea-container {
-		width: 50%;
+		/* width: 50%; */
 	}
 	.muneco-container {
 		margin: 0;
