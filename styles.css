@@ -20,7 +20,9 @@ textarea {
 	font-size: 32px;
 	resize: none;
 }
-
+#copiar-btn {
+	display: none;
+}
 #muneco {
 	width: 300px;
 	height: 300px;
@@ -29,7 +31,7 @@ textarea {
 	background-color: #ffffff;
 	margin-left: 3rem;
 	width: 400px;
-	height: 580px;
+	height: 90vh;
 	box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
 	border-radius: 32px;
 	display: flex;
@@ -38,9 +40,9 @@ textarea {
 	align-items: center;
 }
 .logo-container {
-	position: fixed;
-	top: 20px;
-	left: 40px;
+	position: sticky;
+	/* top: 20px;
+	left: 40px; */
 }
 .flex-container {
 	margin: 1rem 4rem 0rem 4rem;
@@ -66,6 +68,9 @@ textarea {
 	display: flex;
 	align-self: flex-end;
 	flex-direction: column;
+}
+.botones > p {
+	padding-bottom: 0.3rem;
 }
 #encriptar {
 	background-color: #0a3871;
@@ -104,4 +109,120 @@ textarea {
 	margin-top: 4rem;
 	display: none;
 	padding: 1rem;
+}
+.textarea-inner-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.resultado-responsive {
+	display: none;
+}
+/*Media Queries */
+
+/* Celular  */
+@media (max-width: 768px) {
+	body {
+		background-color: #e5e5e5;
+	}
+	.logo-container {
+		position: absolute;
+		margin-right: 12rem;
+	}
+	.flex-container {
+		margin: 0rem;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.logo-container {
+		top: 20px;
+		left: -20px;
+	}
+	.textarea-container {
+		margin-top: 5rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 0;
+		text-align: center;
+		width: 100%;
+	}
+	.textarea-inner-container {
+		height: 13rem;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	textarea {
+		width: 100%;
+		font-size: 26px;
+		margin: 0.5rem;
+		height: 100vh;
+	}
+	.botones {
+		width: 100%;
+	}
+	#encriptar {
+		padding: 0px;
+		width: 15rem;
+	}
+	.desencriptar {
+		padding: 0px;
+		width: 15rem;
+	}
+	.muneco-container {
+		margin: 0rem;
+		width: 90%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#muneco {
+		display: none;
+	}
+	.no-encontrado {
+		text-align: center;
+		height: 100%;
+		padding-top: 2rem;
+	}
+
+	.botones {
+		text-align: center;
+	}
+	.botones p {
+		margin-bottom: 1rem;
+		display: inline-block;
+	}
+	.botones > p {
+		font-size: 14px;
+		margin-left: 15px;
+		align-self: center;
+	}
+	.no-encontrado h3 {
+		margin: 0rem;
+	}
+	.msg-resultado-container > p {
+		height: 100%;
+	}
+	#copiar-btn {
+		width: 13rem;
+		padding: 1rem;
+	}
+}
+
+@media (max-width: 1279px) {
+	.flex-container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.textarea-container {
+		width: 50%;
+	}
+	.muneco-container {
+		margin: 0;
+	}
 }

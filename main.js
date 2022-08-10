@@ -12,15 +12,12 @@ const llavesMap = new Map([
 	['o', 'ober'],
 	['u', 'ufat'],
 ])
-const checkIfStringHasSpecialChar = (_string) => {
+const checkIfStringHasSpecialChar = (string) => {
 	let spChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-	if (spChars.test(_string)) {
-		return true
-	} else {
-		return false
-	}
+	return spChars.test(string) ? true : false
 }
 const encriptar = () => {
+	btnCopiar.style.display = 'inline-block'
 	const textoTextarea = textarea[0].value
 	const specialCharecters = checkIfStringHasSpecialChar(textoTextarea)
 	if (!specialCharecters) {
@@ -53,21 +50,15 @@ const desencriptar = () => {
 		}
 	}
 }
-// const copiar = (str) => {
-// 	if (navigator && navigator.clipboard && navigator.clipboard.writeText)
-// 		return navigator.clipboard.writeText(str)
-// 	return Promise.reject('The Clipboard API is not available.')
-// }
-
-// const mostrarMensaje = (functionEncriptar) => {
-// 	const msjEncriptado = functionEncriptar() ?? ''
-// 	if (msjEncriptado.trim()) {
-// 		msjResultado.textContent = msjEncriptado
-// 		msjResultado.style.display = 'inline-block'
-// 		muneco.style.display = 'none'
-// 		msjNoEncontrado[0].style.display = 'none'
-// 	}
-// }
+const mostrarMensaje = (functionEncriptar) => {
+	const msjEncriptado = functionEncriptar() ?? ''
+	if (msjEncriptado.trim()) {
+		msjResultado.textContent = msjEncriptado
+		msjResultado.style.display = 'inline-block'
+		muneco.style.display = 'none'
+		msjNoEncontrado[0].style.display = 'none'
+	}
+}
 const mostarMensajeEncriptado = () => {
 	const msjEncriptado = encriptar() ?? ''
 	if (msjEncriptado.trim()) {
@@ -86,6 +77,5 @@ const mostarMensajeDesencriptado = () => {
 		msjNoEncontrado[0].style.display = 'none'
 	}
 }
-
 btnEncriptar.addEventListener('click', mostarMensajeEncriptado)
 btnDesencriptar.addEventListener('click', mostarMensajeDesencriptado)
