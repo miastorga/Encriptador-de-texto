@@ -44,12 +44,10 @@ const desencriptar = () => {
 			.every((char) => char === char.toLowerCase())
 		if (validarMayusculas) {
 			for (const [key, value] of llavesMap) {
-				if (textoTextarea.includes(value)) {
-					textoTextarea = textoTextarea.replaceAll(value, key)
-				}
+				textoTextarea = textoTextarea.replaceAll(value, key)
 			}
-			return textoTextarea
 		}
+		return textoTextarea
 	}
 }
 const mostarMensajeEncriptado = () => {
